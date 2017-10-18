@@ -52,7 +52,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         {
             if(this.checkEmailAndPassword())
             {
-
+                Intent shoppinglist_intent = new Intent(this, ShoppingListActivity.class);
+                startActivity(shoppinglist_intent);
             }
         }
     }

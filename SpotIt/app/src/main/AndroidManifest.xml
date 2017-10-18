@@ -28,6 +28,10 @@
         <activity
             android:name=".SignupActivity"
             android:screenOrientation="portrait"></activity>
-</application>
+        <activity
+            android:name=".ShoppingListActivity"
+            android:screenOrientation="portrait"></activity>
+
+    </application>
 
 </manifest>
