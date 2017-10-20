@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.it.spot.spotit.MainFragement">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ss.com.bannerslider.views.BannerSlider
+            android:id="@+id/banner_slider"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="horizontal"
+            app:interval="5000"
+            app:defaultIndicators="circle">
+
+        </ss.com.bannerslider.views.BannerSlider>
+
+        <GridView
+            android:id="@+id/shopping_grid_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="2"
+            android:gravity="center"/>
+    </LinearLayout>
+</FrameLayout>
