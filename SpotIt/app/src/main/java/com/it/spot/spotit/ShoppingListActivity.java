@@ -1,5 +1,6 @@
 package com.it.spot.spotit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -45,7 +46,9 @@ public class ShoppingListActivity extends AppCompatActivity
         NavigationMenuItem test_item6 = new NavigationMenuItem("Furniture");
         NavigationMenuItem test_item7 = new NavigationMenuItem("Electrical applicances");
         NavigationMenuItem test_item8 = new NavigationMenuItem("Offers");
+        NavigationMenuItem test_item10 = new NavigationMenuItem("My Profile");
 
+        this.navigationListArray.add(test_item10);
         this.navigationListArray.add(test_item1);
         this.navigationListArray.add(test_item2);
         this.navigationListArray.add(test_item3);
@@ -62,11 +65,16 @@ public class ShoppingListActivity extends AppCompatActivity
         this.navigationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
-
-                    ShoppingListFragement shopping_fragement = new ShoppingListFragement();
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.flContent, shopping_fragement).commit();
-
+                    if(position == 0)
+                    {
+                        Intent profile_intent = new Intent(ShoppingListActivity.this, ProfileActivity.class);
+                        startActivity(profile_intent);
+                    }
+                    else {
+                        ShoppingListFragement shopping_fragement = new ShoppingListFragement();
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.flContent, shopping_fragement).commit();
+                    }
             }
 
         });

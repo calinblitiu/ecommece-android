@@ -25,7 +25,8 @@
             android:id="@+id/shopping_grid_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:numColumns="2"
-            android:gravity="center"/>
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:numColumns="2" />
     </LinearLayout>
 </FrameLayout>
