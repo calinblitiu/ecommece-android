@@ -5,16 +5,16 @@
     android:layout_height="wrap_content"
     android:background="@android:color/background_light"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="2dp">
 
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/shopping_item_border"
         android:orientation="vertical"
         android:padding="5dp">
@@ -40,16 +40,36 @@
             android:textColor="@color/colorMain"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/textView6"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:text="SR 302"
-            android:textAlignment="textEnd"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp" />
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="8"
+                android:gravity="center_vertical"
+                android:text="SR"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:gravity="bottom"
+                android:text="50"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

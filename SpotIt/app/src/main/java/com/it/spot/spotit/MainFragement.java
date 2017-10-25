@@ -27,6 +27,7 @@ public class MainFragement extends Fragment {
     BannerSlider banner;
     List<Banner> banners;
     GridView shoppingGridView;
+    ShoppingListActivity superActivity;
     ArrayList<ShoppingGridItem> items;
     public MainFragement() {
         // Required empty public constructor
@@ -38,6 +39,9 @@ public class MainFragement extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview =  inflater.inflate(R.layout.fragment_main, container, false);
+
+        this.superActivity = (ShoppingListActivity)this.getActivity();
+        this.superActivity.showSearchInput();
 
         this.banner = (BannerSlider) rootview.findViewById(R.id.banner_slider);
         this.banners = new ArrayList<>();

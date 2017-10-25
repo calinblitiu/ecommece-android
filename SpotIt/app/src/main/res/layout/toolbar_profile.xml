@@ -28,6 +28,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:visibility="visible"
             app:srcCompat="@drawable/profile_cart_icon" />
 
         <TextView

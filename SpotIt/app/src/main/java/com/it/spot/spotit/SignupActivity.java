@@ -25,13 +25,13 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_signup);
 
-        this.login_btn = (TextView)findViewById(R.id.signup_login_btn);
-        this.login_btn.setOnClickListener(this);
+//        this.login_btn = (TextView)findViewById(R.id.signup_login_btn);
+//        this.login_btn.setOnClickListener(this);
 
         this.signup_btn = (Button)findViewById(R.id.singup_signup_btn);
         this.signup_btn.setOnClickListener(this);
@@ -44,10 +44,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.signup_login_btn)
-        {
-            this.finish();
-        }
+//        if(v.getId() == R.id.signup_login_btn)
+//        {
+//            this.finish();
+//        }
 
         if(v.getId() == R.id.singup_signup_btn)
         {

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_login"
+    android:background="@drawable/back_login2"
     android:orientation="vertical">
 
     <ScrollView
@@ -25,22 +25,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:weightSum="10">
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3" />
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:text="The Login"
+                    android:text="Login"
                     android:textColor="@color/colorMain"
                     android:textSize="24sp" />
             </LinearLayout>
@@ -71,6 +63,7 @@
                         android:layout_weight="4"
                         android:gravity="center_vertical"
                         android:text="Email"
+                        android:paddingLeft="10dp"
                         android:textColor="@android:color/black"
                         android:textSize="15sp" />
 
@@ -92,6 +85,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="4"
                         android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
                         android:text="Password"
                         android:textColor="@android:color/black"
                         android:textSize="15sp" />
@@ -126,14 +120,14 @@
                         android:layout_height="0dp"
                         android:layout_weight="3" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/login_signup_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Create an account"
-                        android:textAlignment="center"
-                        android:textColor="@color/colorMain"
-                        android:textSize="18sp" />
+                        android:background="@drawable/round_color_btn"
+                        android:text="Signup"
+                        android:textAllCaps="false" />
+
 
                 </LinearLayout>
             </LinearLayout>

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_login"
+    android:background="@drawable/back_signup2"
     android:orientation="vertical">
 
     <ScrollView
@@ -27,22 +27,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal"
-                android:weightSum="10">
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3" />
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/signupcreateaccount"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:text="The Login"
+                    android:text="Create an account"
                     android:textColor="@color/colorMain"
                     android:textSize="24sp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -71,6 +65,7 @@
                         android:layout_weight="4"
                         android:gravity="center_vertical"
                         android:text="Email"
+                        android:paddingLeft="10dp"
                         android:textColor="@android:color/black"
                         android:textSize="15sp" />
 
@@ -78,7 +73,7 @@
                         android:id="@+id/signup_email_edittext"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="5"
+                        android:layout_weight="4"
                         android:background="@drawable/input_border_round"
                         android:ems="10"
                         android:inputType="textPersonName"
@@ -92,6 +87,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="4"
                         android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
                         android:text="Password"
                         android:textColor="@android:color/black"
                         android:textSize="15sp" />
@@ -100,7 +96,7 @@
                         android:id="@+id/signup_password_edittext"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="5"
+                        android:layout_weight="4"
                         android:background="@drawable/input_border_round"
                         android:ems="10"
                         android:inputType="textPassword"
@@ -114,6 +110,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="4"
                         android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
                         android:text="re Password"
                         android:textColor="@android:color/black"
                         android:textSize="15sp" />
@@ -122,7 +119,7 @@
                         android:id="@+id/signup_repassword_edittext"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="5"
+                        android:layout_weight="4"
                         android:background="@drawable/input_border_round"
                         android:ems="10"
                         android:inputType="textPassword"
@@ -147,7 +144,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="3" />
-
+<!--
                     <TextView
                         android:id="@+id/signup_login_btn"
                         android:layout_width="match_parent"
@@ -156,7 +153,7 @@
                         android:textAlignment="center"
                         android:textColor="@color/colorMain"
                         android:textSize="18sp" />
-
+-->
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

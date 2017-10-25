@@ -29,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity
         LinearLayout list_item_shipping = (LinearLayout)findViewById(R.id.list_item_shipping);
         LinearLayout list_item_personal_data = (LinearLayout)findViewById(R.id.list_item_personal_data);
         LinearLayout list_item_the_cart = (LinearLayout)findViewById(R.id.list_item_the_cart);
+        LinearLayout list_item_wish_list = (LinearLayout)findViewById(R.id.list_item_wish_list);
 
         list_item_shipping.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +52,12 @@ public class ProfileActivity extends AppCompatActivity
             }
         });
 
-
+        list_item_wish_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewWishList();
+            }
+        });
 
     }
 
@@ -72,6 +78,13 @@ public class ProfileActivity extends AppCompatActivity
     public void viewMyCart()
     {
         MyCartFragment main_fragement = new MyCartFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.profilecontent, main_fragement).commit();
+    }
+
+    public void viewWishList()
+    {
+        WishListFragment main_fragement = new WishListFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.profilecontent, main_fragement).commit();
     }

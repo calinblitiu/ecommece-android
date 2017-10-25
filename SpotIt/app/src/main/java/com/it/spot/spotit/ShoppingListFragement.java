@@ -26,6 +26,7 @@ public class ShoppingListFragement extends Fragment {
 
     GridView shoppingGridView;
     ArrayList<ShoppingGridItem> items;
+    ShoppingListActivity superActivity;
 
     public ShoppingListFragement() {
         // Required empty public constructor
@@ -37,6 +38,9 @@ public class ShoppingListFragement extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview =  inflater.inflate(R.layout.fragment_shopping_list, container, false);
+
+        this.superActivity = (ShoppingListActivity)this.getActivity();
+        this.superActivity.showSearchInput();
 
         this.shoppingGridView = (GridView)rootview.findViewById(R.id.search_grid_main);
         this.items = new ArrayList<ShoppingGridItem>();

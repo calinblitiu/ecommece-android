@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 public class PersonalDataFragment extends Fragment {
 
+    ShoppingListActivity superActivity;
 
     public PersonalDataFragment() {
         // Required empty public constructor
@@ -22,7 +23,11 @@ public class PersonalDataFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_personal_data, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_personal_data, container, false);
+        this.superActivity = (ShoppingListActivity)this.getActivity();
+        this.superActivity.hideSearchInput();
+        this.superActivity.setProfileNavKindText("Personal data");
+        return rootView;
     }
 
 

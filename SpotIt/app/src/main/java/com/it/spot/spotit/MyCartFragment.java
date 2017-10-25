@@ -20,6 +20,7 @@ public class MyCartFragment extends Fragment {
     ListView myCartListView;
     ArrayList<MyCartListItem> myCartList;
     MyCartListItemAdater myCartListItemAdater;
+    ShoppingListActivity superActivity;
 
     public MyCartFragment() {
         // Required empty public constructor
@@ -31,7 +32,9 @@ public class MyCartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_my_cart, container, false);
-
+        this.superActivity = (ShoppingListActivity)this.getActivity();
+        this.superActivity.hideSearchInput();
+        this.superActivity.setProfileNavKindText("My Cart");
         this.myCartListView = (ListView)rootview.findViewById(R.id.my_cart_listview);
 
         this.myCartList = new ArrayList<MyCartListItem>();

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -13,13 +12,13 @@ import java.util.ArrayList;
  * Created by rubby on 10/22/2017.
  */
 
-public class MyCartListItemAdater extends BaseAdapter {
+public class WishListItemAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mInflater;
-    private ArrayList<MyCartListItem> mDataSource;
+    private ArrayList<WishListItem> mDataSource;
 
-    public MyCartListItemAdater(Context context, ArrayList<MyCartListItem> items) {
+    public WishListItemAdapter(Context context, ArrayList<WishListItem> items) {
         mContext = context;
         mDataSource = items;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -43,15 +42,13 @@ public class MyCartListItemAdater extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         if(position == mDataSource.size())
         {
-            View rowView = mInflater.inflate(R.layout.my_cart_list_complete_item,parent,false);
+            View rowView = mInflater.inflate(R.layout.wish_list_add_all_in_cart_item,parent,false);
             return rowView;
         }
 
-        View rowView = mInflater.inflate(R.layout.mycart_list_item,parent,false);
+        View rowView = mInflater.inflate(R.layout.wish_list_item,parent,false);
         return rowView;
-
     }
 }

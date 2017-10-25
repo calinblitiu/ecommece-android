@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 public class ShippingAddressesFragment extends Fragment {
 
-
+    ShoppingListActivity superActivity;
     public ShippingAddressesFragment() {
         // Required empty public constructor
     }
@@ -22,7 +22,12 @@ public class ShippingAddressesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shipping_addresses, container, false);
+        View rootview = inflater.inflate(R.layout.fragment_shipping_addresses, container, false);
+
+        this.superActivity = (ShoppingListActivity)this.getActivity();
+        this.superActivity.hideSearchInput();
+        this.superActivity.setProfileNavKindText("Shipping Addresses");
+        return rootview;
     }
 
 }

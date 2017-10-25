@@ -15,15 +15,39 @@
 
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/navigation_back_btn"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="30dp"
             app:srcCompat="@drawable/back_icon" />
 
+        <ImageView
+            android:id="@+id/checkout_buskect"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            app:srcCompat="@drawable/profile_cart_icon" />
+
+        <TextView
+            android:id="@+id/checkout_badg_count"
+            android:layout_width="15dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="-10dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/badge_number"
+            android:gravity="center"
+            android:text="5"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/shopping_search_edittext"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_gravity="center_vertical"
@@ -36,7 +60,24 @@
             android:inputType="textPersonName"
             android:paddingRight="7dp"
             android:textAlignment="textEnd"
-            android:textColor="@color/colorMain" />
+            android:textColor="@color/colorMain"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/profile_nav_kind_text"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="17"
+            android:drawablePadding="3dp"
+            android:ems="10"
+            android:gravity="center"
+            android:paddingRight="7dp"
+            android:text="My Profile"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/menu_icon_image"

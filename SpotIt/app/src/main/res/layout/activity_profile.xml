@@ -127,6 +127,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/list_item_wish_list"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
