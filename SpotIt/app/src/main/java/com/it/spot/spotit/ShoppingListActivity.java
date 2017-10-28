@@ -1,10 +1,12 @@
 package com.it.spot.spotit;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -15,7 +17,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.microedition.khronos.opengles.GL;
 
 /**
  * Created by rubby on 10/16/2017.
@@ -24,7 +32,7 @@ import java.util.ArrayList;
 public class ShoppingListActivity extends AppCompatActivity
 {
     ListView navigationListView;
-    ArrayList<NavigationMenuItem> navigationListArray;
+
     ImageView menuIconImageView;
     DrawerLayout navigationMenuView;
     EditText shopping_search_edittext;
@@ -46,57 +54,12 @@ public class ShoppingListActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, main_fragement).commit();
 
-        this.navigationListArray = new ArrayList<NavigationMenuItem>();
+        Global.navigationListArray = new ArrayList<NavigationMenuItem>();
+        NavigationMenuItem profile_item = new NavigationMenuItem("My Profile");
+        Global.navigationListArray.add(profile_item);
 
-        NavigationMenuItem test_item1 = new NavigationMenuItem("woman");
-        NavigationMenuItem test_item2 = new NavigationMenuItem("man");
-        NavigationMenuItem test_item3 = new NavigationMenuItem("child");
-        NavigationMenuItem test_item4 = new NavigationMenuItem("decor");
-        NavigationMenuItem test_item5 = new NavigationMenuItem("household appliance");
-        NavigationMenuItem test_item6 = new NavigationMenuItem("Furniture");
-        NavigationMenuItem test_item7 = new NavigationMenuItem("Electrical applicances");
-        NavigationMenuItem test_item8 = new NavigationMenuItem("Offers");
-        NavigationMenuItem test_item10 = new NavigationMenuItem("My Profile");
+        this.loadCategories();
 
-        this.navigationListArray.add(test_item10);
-        this.navigationListArray.add(test_item1);
-        this.navigationListArray.add(test_item2);
-        this.navigationListArray.add(test_item3);
-        this.navigationListArray.add(test_item4);
-        this.navigationListArray.add(test_item5);
-        this.navigationListArray.add(test_item6);
-        this.navigationListArray.add(test_item7);
-        this.navigationListArray.add(test_item8);
-
-        this.navigationListView = (ListView)findViewById(R.id.navigation_listview);
-        NavigationMenuItemAdapter navigationMenuItemAdapter = new NavigationMenuItemAdapter(this, navigationListArray);
-        navigationListView.setAdapter(navigationMenuItemAdapter);
-
-        this.navigationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-                drawer.closeDrawer(GravityCompat.END);
-                    if(position == 0)
-                    {
-                        MyProfileFragment main_fragement = new MyProfileFragment();
-                        FragmentManager fragmentManager = getSupportFragmentManager();
-                        fragmentManager.beginTransaction().replace(R.id.flContent, main_fragement).commit();
-
-                        NavigationHistoryItem item1= new NavigationHistoryItem("myprofile");
-                        navigationHistory.add(item1);
-                    }
-                    else {
-                        ShoppingListFragement shopping_fragement = new ShoppingListFragement();
-                        FragmentManager fragmentManager = getSupportFragmentManager();
-                        fragmentManager.beginTransaction().replace(R.id.flContent, shopping_fragement).commit();
-
-                        NavigationHistoryItem item1= new NavigationHistoryItem("search");
-                        navigationHistory.add(item1);
-                    }
-            }
-
-        });
 
 
         ImageView menu_icon_image = (ImageView)findViewById(R.id.menu_icon_image);
@@ -186,7 +149,10 @@ public class ShoppingListActivity extends AppCompatActivity
                     fragmentManager.beginTransaction().replace(R.id.flContent, main_fragement).commit();
                     break;
                 case "search":
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("position", temp.itemPosition);
                     ShoppingListFragement shopping_fragement = new ShoppingListFragement();
+                    shopping_fragement.setArguments(bundle);
                     fragmentManager.beginTransaction().replace(R.id.flContent, shopping_fragement).commit();
                     break;
                 case "myprofile":
@@ -217,5 +183,103 @@ public class ShoppingListActivity extends AppCompatActivity
     {
         this.navigationHistory.add(item);
     }
+
+    public void loadCategories()
+    {
+        NetWorkTrans netWorkTrans = new NetWorkTrans(new AsyncResponse() {
+            @Override
+            public void processFinishWithSuccess(String method, String output) throws JSONException {
+                JSONObject outputObj = new JSONObject(output);
+                if(outputObj.getInt("success") == 1)
+                {
+                    Global.categries = outputObj.getJSONArray("data");
+
+                    for (int i = 0;i< Global.categries.length();i++)
+                    {
+                        JSONObject tempCategory = Global.categries.getJSONObject(i);
+                        NavigationMenuItem temp = new NavigationMenuItem(tempCategory.getString("name"));
+                        temp.category_data = tempCategory;
+                        Global.navigationListArray.add(temp);
+                    }
+
+                    navigationListView = (ListView)findViewById(R.id.navigation_listview);
+                    NavigationMenuItemAdapter navigationMenuItemAdapter = new NavigationMenuItemAdapter(ShoppingListActivity.this, Global.navigationListArray);
+                    navigationListView.setAdapter(navigationMenuItemAdapter);
+
+                    navigationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
+                            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                            drawer.closeDrawer(GravityCompat.END);
+                            if(position == 0)
+                            {
+                                MyProfileFragment main_fragement = new MyProfileFragment();
+                                FragmentManager fragmentManager = getSupportFragmentManager();
+                                fragmentManager.beginTransaction().replace(R.id.flContent, main_fragement).commit();
+
+                                NavigationHistoryItem item1= new NavigationHistoryItem("myprofile");
+                                navigationHistory.add(item1);
+                            }
+                            else {
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("position", position);
+                                ShoppingListFragement shopping_fragement = new ShoppingListFragement();
+                                shopping_fragement.setArguments(bundle);
+                                FragmentManager fragmentManager = getSupportFragmentManager();
+                                fragmentManager.beginTransaction().replace(R.id.flContent, shopping_fragement).commit();
+
+
+                                NavigationHistoryItem item1= new NavigationHistoryItem("search");
+                                item1.itemPosition = position;
+                                navigationHistory.add(item1);
+                            }
+                        }
+
+                    });
+
+                }
+                else if(outputObj.getInt("success") == 0)
+                {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ShoppingListActivity.this);
+                    alertDialogBuilder.setMessage(outputObj.getString("error"));
+
+                    alertDialogBuilder.setNegativeButton("Close",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
+
+            }
+
+            @Override
+            public void processFinishWithError(String method) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ShoppingListActivity.this);
+                alertDialogBuilder.setMessage("NetWork Error");
+                alertDialogBuilder.setNegativeButton("Close",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+
+        HashMap<String, Object> params;
+        params = new HashMap<>();
+        params.put("method","get");
+        params.put("url", Global.api_prefix_oauth+Global.categories_url);
+        params.put("is_get_access_token","no");
+        netWorkTrans.execute(params);
+    }
+
 
 }

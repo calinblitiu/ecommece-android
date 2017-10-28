@@ -6,6 +6,7 @@ package com.it.spot.spotit;
 
 public class NavigationHistoryItem {
     String navigation_kind;
+    int itemPosition;
     public NavigationHistoryItem(String kind)
     {
         this.navigation_kind = kind;
